@@ -121,6 +121,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'grappelli',
     'filebrowser',
+    'south',
+    
     'scenario',
 )
 

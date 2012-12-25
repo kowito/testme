@@ -1,8 +1,14 @@
 from django.contrib import admin
-from testbuilder.scenario.models import Scenario
+from scenario.models import Scenario, TestSet
 
+
+class TestSetAdmin(admin.ModelAdmin):
+    list_display = ('name','test_date','note')
+    prepopulated_fields = {"slug": ("name",)}
+    
+    
 class ScenarioAdmin(admin.ModelAdmin):
-    list_display = ('test_case_id','test_case', 'purpose')
+    list_display = ('test_case_id','test_case', 'test_date','tester_accepted')
     
     class Media:
     
@@ -11,4 +17,5 @@ class ScenarioAdmin(admin.ModelAdmin):
               '/static/grappelli/tinymce_setup/tinymce_setup.js',
               ]
 
+admin.site.register(TestSet,TestSetAdmin)
 admin.site.register(Scenario,ScenarioAdmin)

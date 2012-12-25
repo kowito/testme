@@ -1,4 +1,17 @@
 from django.db import models,IntegrityError,transaction
+from django.template.defaultfilters import slugify
+
+class TestSet(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField()
+    test_date = models.DateTimeField(null=True,blank=True)
+    note = models.TextField(null=True,blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name)
+            super(TestSet, self).save(*args, **kwargs)
+
 
 class Scenario(models.Model):	
     test_case = models.CharField(max_length=255)
@@ -32,4 +45,5 @@ class Scenario(models.Model):
 
     class Meta: 
         ordering = ['case_order']
+
         
