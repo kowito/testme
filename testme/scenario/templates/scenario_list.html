@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>TPS Test Script</title>
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="http://blueprintcss.org/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="http://blueprintcss.org/blueprint/print.css" type="text/css" media="print">
+
+    <!--[if lt IE 8]><link rel="stylesheet" href="http://blueprintcss.org/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <style type="text/css" media="screen">
+      p, table, hr, .box { margin-bottom:25px; }
+      .box p { margin-bottom:10px; }
+      table, th, td {vertical-align: top;}
+      table{border: 1px solid #aaa;}
+    </style>
+  </head>
+  <html>
+  <body>
+{% block content %}
+	<div class="container">
+    {% for test in test_list %}
+    	<h2>{{test.test_case_id}}:{{test.test_case}}</h2>
+    	<table >
+    	
+    	<tr>
+    		<td width=200px>Purpose</td>
+    		<td>{{test.purpose|safe}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Pre requisite</td>
+    		<td>{{test.pre_requisite|safe}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Test data</td>
+    		<td>{{test.test_data|safe}}</td>
+    	</tr>
+        	
+    	<tr>
+    		<td>Test step</td>
+    		<td>{{test.test_step|safe}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Expected result</td>
+    		<td>{{test.expected_result|safe}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Actual result</td>
+    		<td>{{test.actual_result|safe}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Test date</td>
+    		<td>{{test.test_date}}</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Tester accepted?</td>
+    		<td>-</td>
+    	</tr>
+    	
+    	<tr>
+    		<td>Note</td>
+    		<td>{{test.note|safe}}</td>
+    	</tr>
+    	
+		</table>    
+    {% endfor %}
+
+</div>
+{% endblock %}
+</body>
+</html>
