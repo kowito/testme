@@ -6,6 +6,9 @@ class TestSet(models.Model):
     slug = models.SlugField()
     test_date = models.DateTimeField(null=True,blank=True)
     note = models.TextField(null=True,blank=True)
+
+    def __unicode__(self):
+        return self.name
     
     def save(self, *args, **kwargs):
         if not self.id:
@@ -15,6 +18,7 @@ class TestSet(models.Model):
 
 class Scenario(models.Model):	
     test_case = models.CharField(max_length=255)
+    test_set = models.ForeignKey('TestSet')
     purpose	= models.TextField()
     pre_requisite = models.TextField(null=True,blank=True)	
     test_data = models.TextField(null=True,blank=True)

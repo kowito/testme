@@ -1,10 +1,12 @@
 # Django settings for testme project.
+import os
+PROJECT_ROOT = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Kowit C.', 'kowit.s.c@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -106,7 +108,11 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, "templates"),
+    
 )
+print PROJECT_ROOT
+print TEMPLATE_DIRS
 
 INSTALLED_APPS = (
     'django.contrib.auth',
