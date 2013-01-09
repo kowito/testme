@@ -1,7 +1,7 @@
 # Django settings for testme project.
 import os
 PROJECT_ROOT = os.path.dirname(__file__)
-
+PROJECT_ROOT = os.getcwd()
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -58,7 +58,9 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+#/Users/kowito/Projects/testme/testme/testme/staticfiles/
+
+STATIC_ROOT = "%s/static_files/" % PROJECT_ROOT
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -108,11 +110,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates"),
-    
+    os.path.join(PROJECT_ROOT, "testme/templates"),
 )
-print PROJECT_ROOT
-print TEMPLATE_DIRS
 
 INSTALLED_APPS = (
     'django.contrib.auth',
